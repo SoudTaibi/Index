@@ -1,0 +1,27 @@
+{% extends 'Receptionist/ReceptionistNavbar.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+{% for appointment in appointment %}
+    <h1 > Id : {{ appointment.id}}</h1>
+    <h1>Doctor Name : {{ appointment.doctor }}</h1>
+    <h1>Patient Name : {{ appointment.patient }}</h1>
+    <h1>Phone Number : {{ appointment.Number }}</h1>
+    <h1>Trx ID : {{ appointment.TrxID }}</h1>
+    <h1>Amount : {{ appointment.amount }}</h1>
+    <h1>Apply : {{ appointment.is_apply }}</h1>
+    <h1>Payment Status : {{ appointment.payment_status }}</h1>
+    <h1>Meet Up Link : {{ appointment.meet_link }}</h1>
+    <h1>Date : {{ appointment.date }}</h1>
+    <h1>Time : {{ appointment.time }}</h1>
+ <a  class="btn btn-primary" href="{% url 'receptionist_list_take_appointment' %}">Back Appointment List</a>
+{% endfor %}
+
+
+
+
+{% endblock content %}

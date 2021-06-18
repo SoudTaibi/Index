@@ -1,0 +1,42 @@
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li>
+                    <a href="{% url 'ReceptionistHome' %}"><i class="fa fa-home"></i> Home </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'list_category' %}"><i class="fa fa-book"></i> Category </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'list_degree' %}"><i class="fa fa-cut"></i> Degree </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'doctor_list' %}"><i class="fa fa-edit"></i> Doctor </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'patient_list' %}"><i class="fa fa-clone"></i> View Patient </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'receptionist_list_take_appointment' %}"><i class="fa fa-cube"></i> View Take Appointment </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'list_take_appointment_payment' %}"><i class="fa fa-server"></i> Payment System </a>
+                  </li>
+                  <li>
+                    <a> <i class="fa fa-desktop"></i>Profile</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'SuperAdminProfile' %}">Profile</a></li>
+                      <li><a href="{% url 'SuperAdmin_change_email' %}">Change Email</a></li>
+                      <li><a href="{% url 'SuperAdmin_change_password' %}">Change Password</a></li>
+
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="{% url 'log_out' %}"><i class="fa fa-sign-out"></i> Log Out </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->

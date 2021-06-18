@@ -1,0 +1,39 @@
+{% for employee in employees %}
+  {% if employee.is_doctor %}
+      <tr>
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.username}}</td>
+          <td>
+              {% for group in employee.category.all %}
+                     {{ group.name }}<br>
+               {% endfor%}
+          </td>
+          <td>
+              {% for group in employee.degree.all %}
+                     {{ group.degree }}<br>
+               {% endfor%}
+          </td>
+          <td>{{ employee.email }}</td>
+          <td style="width: 150px">
+              <a href="{% url 'doctor_update' employee.id %}" type="button" class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </a>
+            <button type="button"
+                    class="btn btn-success btn-sm js-view-employee"
+                    data-url="{% url 'doctor_view' employee.id %}">
+              <span class='glyphicon glyphicon-eye-open'></span>
+            </button>
+
+            <button type="button"
+                    class="btn btn-danger btn-sm js-delete-employee"
+                    data-url="{% url 'doctor_delete' employee.id %}">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </td>
+      </tr>
+  {% endif%}
+        {% empty %}
+          <tr>
+            <td colspan="8" class="text-center bg-warning">No employee</td>
+          </tr>
+{% endfor %}

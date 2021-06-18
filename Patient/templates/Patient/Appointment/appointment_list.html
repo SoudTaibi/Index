@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+
+                <div >
+                    <div class="card-box table-responsive">
+                        <table class="table" id="datatable-buttons"  style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Doctor Name </th>
+                                    <th>Patient Name </th>
+                                    <th>Phone Number</th>
+                                    <th>Trx ID</th>
+                                    <th>Amount</th>
+                                    <th>Apply</th>
+                                    <th>Payment Status</th>
+                                    <th>Meet Link</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th></th>
+                                    <th></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 {% for appointment in appointment %}
+                                     {% if request.user == appointment.patient %}
+                                        <tr>
+                                              <th scope="row">{{ appointment.id}}</th>
+                                              <td>{{ appointment.doctor }}</td>
+                                              <td>{{ appointment.patient }}</td>
+                                              <td>{{ appointment.Number }}</td>
+                                              <td>{{ appointment.TrxID }}</td>
+                                              <td>{{ appointment.amount }}</td>
+                                              <td>{{ appointment.is_apply }}</td>
+                                              <td>{{ appointment.payment_status }}</td>
+                                              <td>
+                                                 <a href="{{ appointment.meet_link }}" target="_blank">{{ appointment.meet_link }}</a>
+                                              </td>
+                                              <td>
+                                                  {{ appointment.date}}
+                                              </td>
+                                              <td>
+                                                    {{ appointment.time }}
+                                              </td>
+                                              <td>
+                                                    <a href="{% url 'view_patient_prescribe'  appointment.pk %}" class="btn btn-success">View Prescribe</a>
+                                                 <br><br> <a href="{% url 'view_patient_test'  appointment.pk %}" class="btn btn-success">View Test</a>
+                                              </td>
+
+                                        </tr>
+                                     {% endif %}
+                                 {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+</div>
+
+
+<div class="modal fade" id="modal-employee">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+    </div>
+</div>
+
+
+{% endblock content %}
